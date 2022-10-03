@@ -1,8 +1,6 @@
-![main workflow](https://github.com/mongodb-developer/pymongo-fastapi-crud/actions/workflows/main.yml/badge.svg)
-
 # PyMongo with FastAPI CRUD application
 
-This is a simple CRUD application built using PyMongo and FastAPI. You can also follow the step-by-step [tutorial](https://www.mongodb.com/languages/python/pymongo-tutorial) for building this application.
+This is a simple CRUD application built using PyMongo and FastAPI. 
 
 ## Running the server
 
@@ -39,7 +37,3 @@ Execute the tests:
 ```
 python -m pytest
 ```
-
-## Disclaimer
-
-Use at your own risk; not a supported MongoDB product
