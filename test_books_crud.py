@@ -21,19 +21,20 @@ async def shutdown_event():
 
 def test_create_book():
     with TestClient(app) as client:
-        response = client.post("/book/", json={"title": "Don Quixote", "author": "Miguel de Cervantes", "synopsis": "..."})
+        response = client.post("/book/", json={"title": "Don Quixote", "author": "Miguel de Cervantes", "synopsis": "...", "status": "bought"})
         assert response.status_code == 201
 
         body = response.json()
         assert body.get("title") == "Don Quixote"
         assert body.get("author") == "Miguel de Cervantes"
         assert body.get("synopsis") == "..."
+        assert body.get("status") == "bought"
         assert "_id" in body
 
 
 def test_create_book_missing_title():
     with TestClient(app) as client:
-        response = client.post("/book/", json={"author": "Miguel de Cervantes", "synopsis": "..."})
+        response = client.post("/book/", json={"author": "Miguel de Cervantes", "synopsis": "...", })
         assert response.status_code == 422
 
 
@@ -51,7 +52,7 @@ def test_create_book_missing_synopsis():
 
 def test_get_book():
     with TestClient(app) as client:
-        new_book = client.post("/book/", json={"title": "Don Quixote", "author": "Miguel de Cervantes", "synopsis": "..."}).json()
+        new_book = client.post("/book/", json={"title": "Don Quixote", "author": "Miguel de Cervantes", "synopsis": "...", "status": "bought"}).json()
 
         get_book_response = client.get("/book/" + new_book.get("_id"))
         assert get_book_response.status_code == 200

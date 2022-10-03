@@ -7,6 +7,7 @@ class Book(BaseModel):
     title: str = Field(...)
     author: str = Field(...)
     synopsis: str = Field(...)
+    status: str = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -15,7 +16,8 @@ class Book(BaseModel):
                 "_id": "066de609-b04a-4b30-b46c-32537c7f1f6e",
                 "title": "Don Quixote",
                 "author": "Miguel de Cervantes",
-                "synopsis": "..."
+                "synopsis": "...",
+                "status": "bought"
             }
         }
 
@@ -30,6 +32,7 @@ class BookUpdate(BaseModel):
             "example": {
                 "title": "Don Quixote",
                 "author": "Miguel de Cervantes",
-                "synopsis": "Don Quixote is a Spanish novel by Miguel de Cervantes..."
+                "synopsis": "Don Quixote is a Spanish novel by Miguel de Cervantes...",
+                "status": "sold"
             }
         }
